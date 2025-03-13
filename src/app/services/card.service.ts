@@ -27,7 +27,4 @@ export class CardService {
     return this.http.get<any[]>(`${this.apiUrl}/decks/user`);
   }
   
-  deleteDeck(deckId: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}/decks/${deckId}`);
-  }
 }

@@ -48,15 +48,15 @@ export class ProfileComponent implements OnInit {
   }
 
   viewDeck(deckId: number) {
-    // Implement deck viewing logic
+    // TODO: Implement deck viewing logic
   }
 
   editDeck(deckId: number) {
-    // Implement deck editing logic
+    // TODO: Implement deck editing logic
   }
 
   deleteDeck(deckId: number): void {
-    this.cardService.deleteDeck(deckId).subscribe(() => {
+    this.deckService.deleteDeck(deckId).subscribe(() => {
       this.loadUserDecks();
     });
   }

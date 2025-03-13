@@ -1,4 +1,4 @@
-// Main header container
+
 header {
   background: transparent;
   position: fixed;
@@ -12,7 +12,7 @@ header {
     opacity: 0;
     pointer-events: none;
   }
-  // Base navigation styles
+ 
   nav {
     list-style: none;
     display: flex;
@@ -26,7 +26,7 @@ header {
     }
   }
 
-  // List styles
+
   ul {
     list-style: none;
     padding-right: 15px;
@@ -39,7 +39,6 @@ header {
     }
   }
 
-  // Global link styles
   a {
     cursor: pointer;
     text-decoration: none;
@@ -54,7 +53,6 @@ header {
     }
   }
 
-  // Title section styles
   .title {
     margin-left: 20px;
     background: transparent;
@@ -65,7 +63,7 @@ header {
     }
   }
 
-  // Navigation list styles
+
   .centered-nav {
     display: flex;
     gap: 20px;
@@ -73,20 +71,20 @@ header {
     margin-right: auto;
   }
 
-  // Overlay effect
+
   .overlay {
     position: absolute;
 
     background: rgba(149, 158, 183, 0.2);
   }
 
-  // login and signup styles
+
   nav > ul:last-child {
     display: flex;
     gap: 20px;
   }
 
-  // displaying loginn and signup on mobile dropdown
+
   .mobile-only {
     display: none;
   }

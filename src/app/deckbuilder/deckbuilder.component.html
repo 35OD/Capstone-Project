@@ -20,7 +20,7 @@
     <p>LavaFlats: {{ deckStats.lavaFlats }}</p>
   </div>
 
-  <div class="deck-actions">
+  <div class="deck-actions ">
     <h3>Actions</h3>
     <div class="button-container">
       <button (click)="saveDeck()">Save Deck</button>
@@ -170,13 +170,13 @@
       <h3>Login Required</h3>
       <p id="need-to-login" class="flash-color">You need to be logged in to save decks.</p>
       <div class="button-container">
-        <button (click)="redirectToLogin()">Go to Login</button>
+        <button (click)="openLoginPopup()">Go to Login</button>
         <button (click)="showLoginPrompt = false">Cancel</button>
       </div>
     </div>
   </div>
   <div class="popup-overlay" *ngIf="showNamePrompt" (click)="showNamePrompt = false">
-    <div class="popup-content" (click)="$event.stopPropagation()">
+    <div class="popup-content" (click)="$event.stopPropagation()"(keyup.enter)="confirmSaveDeck()">
       <h3>Name Your Deck</h3>
       <input type="text" [(ngModel)]="deckName" placeholder="Enter deck name...">
       <div class="button-container">

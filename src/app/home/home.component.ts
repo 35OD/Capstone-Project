@@ -31,7 +31,7 @@ export class HomeComponent {
     private http: HttpClient,
     private router: Router
   ) {
-    // Replace VIDEO_ID with your actual YouTube video ID
+
     this.videoUrl = this.sanitizer.bypassSecurityTrustResourceUrl(
       'https://www.youtube.com/embed/kf_hRDWbIRE'
     );

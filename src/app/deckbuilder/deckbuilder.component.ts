@@ -60,7 +60,7 @@ export class DeckbuilderComponent {
   searchCards(): void {
     this.cardService.getCards().subscribe((cards) => {
       this.searchResults = cards
-        .filter(card => card && card.name) // Check if card exists and has a name
+        .filter(card => card && card.name) 
         .filter((card) => card.name.toLowerCase().includes(this.searchTerm.toLowerCase()));
     });
   }
@@ -285,7 +285,7 @@ export class DeckbuilderComponent {
   confirmSaveDeck(): void {
     if (this.deckName.trim()) {
       console.log('Starting deck save process with deck name:', this.deckName);
-      // Gather all cards from the deck – ensure no null/undefined values.
+  
       const allCards = [
         this.deck.hero,
         ...this.deck.spells,
@@ -309,8 +309,21 @@ export class DeckbuilderComponent {
       });
     }
   }
-  
-  redirectToLogin(): void {
-    this.router.navigate(['/login']);
+
+  deleteDeck(deckId: number) {
+    this.deckService.deleteDeck(deckId).subscribe({
+      next: () => {
+        console.log('Deck deleted successfully');
+
+      },
+      error: (error) => {
+        console.error('Error deleting deck:', error);
+
+      }
+    });
+  }
+  openLoginPopup(): void {
+    this.showLoginPrompt = false;
+    this.authService.toggleLogin(true); 
   }
 }
