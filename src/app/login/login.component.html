@@ -45,7 +45,7 @@
     </form>
 
     <form class="login-form" *ngIf="!isLogin"  (ngSubmit)="emailInput.valid ? onRegister() : message = 'Please enter a valid email'">
-      <p class="message" [class.flash-red]="!isSuccess" [class.flash-green]="isSuccess">{{ message }}</p>
+      <p class="message" [class.flash-red]="message == 'Please enter a valid email'" [class.flash-green]="isSuccess">{{ message }}</p>
       <div class="form-group">
         <input
           type="text"
