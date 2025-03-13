@@ -1,0 +1,60 @@
+<header>
+  <nav class="overlay">
+    <!-- <a routerLink="/">
+      <img src="../../assets/images/ladyLogo.png" alt="logo" width="70" height="70" />
+    </a> -->
+
+    <div class="title">
+      <a routerLink="/home">
+        <h1>Cards of OOO</h1>
+      </a>
+    </div>
+    <button class="hamburger" (click)="toggleMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="centered-nav" [class.active]="isMenuOpen">
+      <li><a routerLink="/home">Home</a></li>
+      <li class="dropdown">
+        <a (click)="toggleToolsMenu()" id="toolsDropDown">Tools</a>
+        <ul class="dropdown-menu" [class.show]="isToolsMenuOpen">
+          <li><a routerLink="/cards">Database</a></li>
+          <li><a routerLink="/deckbuilder">DeckBuilder</a></li>
+        </ul>
+      </li>
+     
+      <li class="dropdown">
+        <a (click)="toggleHelpMenu()" id="helpDropDown">Help</a>
+        <ul class="dropdown-menu" [class.show]="isHelpMenuOpen">
+          <li><a routerLink="/about">About Us</a></li>
+          <li><a routerLink="/htp">How to Play</a></li>
+          <li><a routerLink="/faq">FAQ</a></li>
+          <li><a routerLink="/contact">Contact Us</a></li>
+        </ul>
+      </li>
+      <li class="mobile-only"><a routerLink="/register">Register</a></li>
+      <li class="mobile-only"><a routerLink="/login">Login</a></li>
+    </ul>
+
+    <ul *ngIf="!username" id="userDropDown">
+      <li><a (click)="openRegister()">Register</a></li>
+      <li><a (click)="openLoginPopup()">Login</a></li>
+    </ul>
+    <!-- todo: add a darkmode/ lightmode button at the right of the login button -->
+
+    <ul *ngIf="username" class="user-dropdown">
+      <li class="dropdown">
+        Hello, {{ username }}
+        <ul class="dropdown-menu" [class.show]="isHelpMenuOpen">
+          <li><a routerLink="/profile">Profile</a></li>
+          <li><a (click)="logout()">Logout</a></li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+
+  <app-login></app-login>
+  
+</header>

@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: "adventureFont";
+
+  src: url("assets/fonts/Thunderman.ttf") format("truetype");
+
+  font-weight: normal;
+
+  font-style: normal;
+}
+
+* {
+  font-family: "adventureFont", sans-serif;
+
+  margin: 0;
+  padding: 0;
+  background-color: #4f5e7f;
+}
+
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4ac6b7;
+  border-radius: 6px;
+  border: 3px solid #4f5e7f;
+  
+  &:hover {
+    background: #399388e6;
+  }
+}
+
+// /* Custom Scrollbar Styles */
+// //TODO: fix this shi to have it looking actually as lady
+// ::-webkit-scrollbar {
+//   width: 20px;
+// }
+
+// ::-webkit-scrollbar-track {
+//   background: transparent;
+// }
+
+// ::-webkit-scrollbar-thumb {
+//   border: 4px solid transparent;
+//   background-clip: padding-box;
+//   min-height: 150px;
+
+//   /* Middle-bottom section */
+//   background-image: url("/assets/scrollbar/body.png");
+//   background-repeat: repeat-y;
+//   background-position: center;
+// }
+
+// /* Top cap */
+// ::-webkit-scrollbar-thumb::before {
+//   content: "";
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   right: 0;
+//   height: 40px;
+//   background-image: url("/assets/scrollbar/head.png");
+//   background-repeat: no-repeat;
+// }
+
+// /* Middle-top section */
+// ::-webkit-scrollbar-thumb::after {
+//   content: "";
+//   position: absolute;
+//   top: 40px;
+//   left: 0;
+//   right: 0;
+//   bottom: 40px;
+//   background-image: url("/assets/scrollbar/hair.png");
+//   background-repeat: no-repeat;
+// }
+
+// /* Bottom cap */
+// ::-webkit-scrollbar-thumb {
+//   border-bottom: 40px solid transparent;
+//   border-image: url("/assets/scrollbar/tail.png") 0 0 40 0;
+// }

@@ -1,0 +1,254 @@
+// Main header container
+header {
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  transition: opacity 0.3s ease-in-out;
+
+  &.hidden{
+    opacity: 0;
+    pointer-events: none;
+  }
+  // Base navigation styles
+  nav {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    font-size: large;
+    &.overlay {
+      display: flex;
+      align-items: center;
+
+      position: relative;
+    }
+  }
+
+  // List styles
+  ul {
+    list-style: none;
+    padding-right: 15px;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    background: transparent;
+    li {
+      background: transparent;
+    }
+  }
+
+  // Global link styles
+  a {
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+    transition: 0.5s;
+    background: transparent;
+    &:hover {
+      color: #4ac6b7;
+    }
+    img {
+      background: transparent;
+    }
+  }
+
+  // Title section styles
+  .title {
+    margin-left: 20px;
+    background: transparent;
+
+    h1 {
+      font-size: 2rem;
+      background: transparent;
+    }
+  }
+
+  // Navigation list styles
+  .centered-nav {
+    display: flex;
+    gap: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  // Overlay effect
+  .overlay {
+    position: absolute;
+
+    background: rgba(149, 158, 183, 0.2);
+  }
+
+  // login and signup styles
+  nav > ul:last-child {
+    display: flex;
+    gap: 20px;
+  }
+
+  // displaying loginn and signup on mobile dropdown
+  .mobile-only {
+    display: none;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  // Mobile responsive styles
+  @media (max-width: 768px) {
+    nav {
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      height: 80px;
+
+      &.overlay {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    .mobile-only {
+      display: block;
+    }
+
+    nav > ul:last-child {
+      display: none;
+    }
+
+    .title h1 {
+      font-size: 1.1rem;
+  
+    }
+
+    img {
+      width: 35px;
+      height: 35px;
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      
+
+      span {
+        display: block;
+        width: 20px;
+        height: 2px;
+        border-radius: 2px;
+        background-color: white;
+        transition: 0.5s;
+      }
+      &:hover span {
+        background-color: #4ac6b7;
+      }
+    }
+
+    .centered-nav {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background:  rgba(102, 108, 125, 0.7);
+      padding: 1rem;
+      flex-direction: column;
+      width: 100%;
+
+      &.active {
+        display: flex;
+        width: 100%;
+        margin: 0;
+        padding: 1rem 0;
+      }
+
+      li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+        background: transparent;
+      }
+    }
+  }
+  .dropdown {
+    position: relative;
+  
+    
+    .arrow {
+      margin-left: 5px;
+    }
+
+  
+    
+    .arrow {
+      margin-left: 5px;
+    }
+    
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(0,0,0,0.9);
+      min-width: 120px;
+      padding: 0.5rem;
+      border-radius: 4px;
+      li {
+        padding: 0.5rem 1rem;
+        &:hover {
+          background: rgba(255,255,255,0.1);
+        }
+      }
+    }
+    &:hover .dropdown-menu {
+      display: block;
+    
+    }
+  }
+
+  .user-dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+    color: white;
+   
+    li {
+      position: relative;
+      a {
+        cursor: pointer;
+        color: white;
+        text-decoration: none;
+        &:hover {
+          color: #4ac6b7;
+        }
+      }
+     
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: rgba(0,0,0,0.9);
+        min-width: 10px;
+        padding: 0.5rem;
+        border-radius: 4px;
+        li {
+          padding: 0.5rem 1rem;
+          &:hover {
+            background: rgba(255,255,255,0.1);
+          }
+        }
+      }
+      &:hover .dropdown-menu {
+        display: block;
+      }
+    }
+  }
+}

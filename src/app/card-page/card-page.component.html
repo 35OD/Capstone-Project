@@ -1,0 +1,30 @@
+<div class="search-bar">
+  <input
+    type="text"
+    [(ngModel)]="searchTerm"
+    [placeholder]="'Search ' + searchType + '...'"
+    (keyup.enter)="goToCards()"
+  />
+  <button id="searchButton" (click)="goToCards()">Search</button>
+</div>
+<p id="search-text">Search for '{{ searchedTerm }}', returned {{ filteredCards.length }} results</p>
+
+<div class="cards-container">
+  <div *ngFor="let card of filteredCards" class="card">
+    <img
+      [src]="'http://localhost:8080' + card.imageUrl"
+      alt="{{ card.name }}"
+      (click)="openPopup(card, $event)"
+    />
+    
+  </div>
+</div>
+<div class="scroll-top" [class.visible]="showScrollTop" (click)="scrollToTop()">
+  Back to Top ⬆
+</div>
+<div class="popup-overlay" *ngIf="popupCard" (click)="closePopup()">
+  <div class="popup-content" (click)="$event.stopPropagation()">
+    <button class="close-btn" (click)="closePopup()">X</button>
+    <img [src]="'http://localhost:8080' + popupCard.imageUrl" alt="{{ popupCard.name }}" />
+  </div>
+</div>

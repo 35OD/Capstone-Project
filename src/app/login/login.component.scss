@@ -1,0 +1,152 @@
+.login-popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(1, 0, 0, 0.9);
+  color: white;
+  z-index: 1000;
+
+  .login-form {
+    background: transparent;
+
+    p.message {
+      background: transparent;
+    }
+    .flash-red {
+      animation: flashWhiteToRed 3s ease-in-out infinite;
+    }
+    
+    .flash-green {
+      animation: flashWhiteToGreen 3s ease-in-out infinite;
+    }
+    
+    @keyframes flashWhiteToRed {
+      0% { color: white; }
+      50% { color: red; }
+      100% { color: white; }
+    }
+    
+    @keyframes flashWhiteToGreen {
+      0% { color: white; }
+      50% { color: #00ff00; }
+      100% { color: white; }
+    }
+  }
+
+  &.show {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .together {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    background: transparent;
+  }
+
+  .centered {
+    text-align: center;
+    background: transparent;
+  }
+
+  .popup-content,
+  .form-group,
+  div,
+  h2 {
+    background: transparent;
+  }
+
+  .popup-content {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: transparent;
+
+    input {
+      padding: 10px;
+      margin-right: 7px;
+      width: 300px;
+      border-radius: 4px;
+      border: 2px solid transparent;
+      color: white;
+      background: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+      gap: 10px;
+
+      &::placeholder {
+        color: white;
+      }
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+      }
+      &:focus {
+        outline: none;
+        border-color: #4ac6b7;
+        box-shadow: 0 0 0 3px rgba(74, 198, 183, 0.3);
+      }
+    }
+    button {
+      padding: 10px 20px;
+      border-radius: 4px;
+      border: none;
+      background: #4ac6b7;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        background: darken(#4ac6b7, 10%);
+      }
+    }
+    .together {
+      h2 {
+        width: 100%;
+        text-align: center;
+      }
+      .form-group {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+
+        .login-btn {
+          width: 90px;
+        }
+      }
+    }
+  }
+  .show-password,
+  .forgot-click {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    &:hover {
+      color: #4ac6b7;
+    }
+  }
+  span {
+    background: transparent;
+  }
+  .switch-form {
+    text-align: center;
+    margin-top: 15px;
+    background: transparent;
+    span {
+      color: #4ac6b7;
+      cursor: pointer;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  div {
+    margin-bottom: 15px;
+  }
+}

@@ -1,0 +1,187 @@
+<div class="deckbuilder-container">
+   <div class="left-panel">
+  <div class="deck-stats">
+    <h2>Deck Stats</h2>
+    <p style="margin-bottom: 20px; margin-top: 20px">Total Cards: {{ deckStats.totalCards }}</p>
+
+    <p>Heroes: {{ deckStats.heroes }}</p>
+    <p>Landscapes: {{ deckStats.landscapes }}</p>
+    <p>Creatures: {{ deckStats.creatures }}</p>
+    <p>Spells: {{ deckStats.spells }}</p>
+    <p style="margin-bottom: 20px;">Buildings: {{ deckStats.buildings }}</p>
+
+    <p>Blue Plains: {{ deckStats.bluePlains }}</p>
+    <p>Cornfields: {{ deckStats.cornfields }}</p>
+    <p>Useless Swamp: {{ deckStats.uselessSwamp }}</p>
+    <p>SandyLands: {{ deckStats.sandyLands }}</p>
+    <p>NiceLands: {{ deckStats.niceLands }}</p>
+    <p>IceLands: {{ deckStats.icyLands }}</p>
+    <p>Rainbow: {{ deckStats.rainbow }}</p>
+    <p>LavaFlats: {{ deckStats.lavaFlats }}</p>
+  </div>
+
+  <div class="deck-actions">
+    <h3>Actions</h3>
+    <div class="button-container">
+      <button (click)="saveDeck()">Save Deck</button>
+    <button (click)="clearDeck()">Clear Deck</button>
+    <button (click)="copyDeckSummary()">Copy Deck to Clipboard</button>
+</div>
+  </div>
+</div>
+ 
+
+
+  <div class="deck-content">
+    <div class="deck-section hero">
+      <h2>Hero</h2>
+      <div
+        *ngIf="deck.hero"
+        class="deck-card"
+        (click)="removeCardFromDeck(deck.hero)"
+      >
+        <img
+          [src]="'http://localhost:8080' + deck.hero.imageUrl"
+          alt="{{ deck.hero.name }}"
+        />
+        <span>{{ deck.hero.name }}</span>
+        <div class="zoom-overlay">
+            <button (click)="openPopup(deck.hero, $event)">+</button>
+          </div>
+        
+      </div>
+    </div>
+    <div class="deck-section landscapes">
+      <h2>Landscapes</h2>
+      <div
+        *ngFor="let card of deck.landscapes"
+        class="deck-card"
+        (click)="removeCardFromDeck(card)"
+      >
+        <img
+          [src]="'http://localhost:8080' + card.imageUrl"
+          alt="{{ card.name }}"
+        />
+        <span>{{ card.name }}</span>
+        <div class="zoom-overlay">
+            <button (click)="openPopup(card, $event)">+</button>
+          </div>
+      </div>
+    </div>
+    <div class="deck-section creatures">
+      <h2>Creatures, Spells and Buildings</h2>
+  <!-- add a way for the title to not scroll as well type shi -->
+      <div
+        *ngFor="let card of deck.creatures"
+        class="deck-card"
+        (click)="removeCardFromDeck(card)"
+      >
+        <img
+          [src]="'http://localhost:8080' + card.imageUrl"
+          alt="{{ card.name }}"
+        />
+        <span>{{ card.name }}</span>
+        <div class="zoom-overlay">
+            <button (click)="openPopup(card, $event)">+</button>
+          </div>
+      </div>
+      <div
+        *ngFor="let card of deck.spells"
+        class="deck-card"
+        (click)="removeCardFromDeck(card)"
+      >
+        <img
+          [src]="'http://localhost:8080' + card.imageUrl"
+          alt="{{ card.name }}"
+        />
+        <span>{{ card.name }}</span>
+        <div class="zoom-overlay">
+            <button (click)="openPopup(card, $event)">+</button>
+          </div>
+      </div>
+      <div
+        *ngFor="let card of deck.buildings"
+        class="deck-card"
+        (click)="removeCardFromDeck(card)"
+      >
+        <img
+          [src]="'http://localhost:8080' + card.imageUrl"
+          alt="{{ card.name }}"
+        />
+        <span>{{ card.name }}</span>
+        <div class="zoom-overlay">
+            <button (click)="openPopup(card, $event)">+</button>
+          </div>
+      </div>
+      <div
+      *ngFor="let card of deck.teamworks"
+      class="deck-card"
+      (click)="removeCardFromDeck(card)"
+    >
+      <img
+        [src]="'http://localhost:8080' + card.imageUrl"
+        alt="{{ card.name }}"
+      />
+      <span>{{ card.name }}</span>
+      <div class="zoom-overlay">
+        <button (click)="openPopup(card, $event)">+</button>
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+  <div class="card-search">
+    <h2>Search Cards</h2>
+    <input
+      type="text"
+      [(ngModel)]="searchTerm"
+      (keyup.enter)="searchCards()"
+      placeholder="Type a card name..."
+    />
+    <button (click)="searchCards()">Search</button>
+
+    <div class="search-results">
+      <div
+        *ngFor="let card of searchResults"
+        class="search-card"
+        (click)="addCardToDeck(card)"
+      >
+        <img
+          [src]="'http://localhost:8080' + card.imageUrl"
+          alt="{{ card.name }}"
+        />
+        <span>{{ card.name }}</span>
+        <div class="zoom-overlay">
+            <button (click)="openPopup(card, $event)">+</button>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="popup-overlay" *ngIf="popupCard" (click)="closePopup()">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <button class="close-btn" (click)="closePopup()">X</button>
+      <img [src]="'http://localhost:8080' + popupCard.imageUrl" alt="{{ popupCard.name }}" />
+    </div>
+  </div>
+  <div class="popup-overlay" *ngIf="showLoginPrompt" (click)="showLoginPrompt = false">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <h3>Login Required</h3>
+      <p id="need-to-login" class="flash-color">You need to be logged in to save decks.</p>
+      <div class="button-container">
+        <button (click)="redirectToLogin()">Go to Login</button>
+        <button (click)="showLoginPrompt = false">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <div class="popup-overlay" *ngIf="showNamePrompt" (click)="showNamePrompt = false">
+    <div class="popup-content" (click)="$event.stopPropagation()">
+      <h3>Name Your Deck</h3>
+      <input type="text" [(ngModel)]="deckName" placeholder="Enter deck name...">
+      <div class="button-container">
+        <button (click)="confirmSaveDeck()">Save</button>
+        <button (click)="showNamePrompt = false">Cancel</button>
+      </div>
+    </div>
+  </div>

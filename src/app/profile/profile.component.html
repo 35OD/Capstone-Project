@@ -1,0 +1,25 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <div class="profile-image">
+      <!-- Default avatar until user uploads custom image -->
+      <img src="assets/images/dayMountain.jpg" alt="Profile Picture">
+    </div>
+    <div class="user-info">
+      <h2>{{ (user$ | async)?.username }}</h2>
+    </div>
+  </div>
+  
+  <div class="decks-container">
+    <h3>My Decks</h3>
+    <div class="deck-grid">
+      <div class="deck-card" *ngFor="let deck of userDecks">
+        <h4>{{ deck.deckName }}</h4>
+        <div class="deck-actions">
+          <button (click)="viewDeck(deck.id)">View</button>
+          <button (click)="editDeck(deck.id)">Edit</button>
+          <button (click)="deleteDeck(deck.id)">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

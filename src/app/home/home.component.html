@@ -1,0 +1,146 @@
+<section class="hero">
+  <div class="background-image">
+    <div class="overlay"></div>
+    <div class="text-container">
+      <h1>Cards of OOO</h1>
+      <p>
+        A deckbuilder and card database for the CCG, Adventure Time: Card Wars
+      </p>
+      <div class="search-container">
+        <div class="search-type">
+          <button
+            [class.active]="searchType === 'cards'"
+            (click)="searchType = 'cards'"
+          >
+            Search Cards
+          </button>
+          <button
+            [class.active]="searchType === 'users'"
+            (click)="searchType = 'users'"
+          >
+            Search Users
+          </button>
+        </div>
+        <div class="search-bar">
+          <input
+            type="text"
+            [(ngModel)]="searchTerm"
+            [placeholder]="'Search ' + searchType + '...'"
+            (keyup.enter)="goToCards()"
+          />
+        </div>
+        <button id="searchButton" *ngIf="searchType === 'cards'" (click)="goToCards()">Search</button>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-down">
+    <span class="arrow" (click)="scrollToContent()">Explore More ⬇</span>
+  </div>
+</section>
+
+
+<section class="featuredContent">
+  <img src="../../assets/images/Pig_Cardwars.webp" alt="The Pig" />
+  <h1>FEATURED CARDS</h1>
+  <div class="image-container">
+    <img src="../../assets/images/cards/The_Pig.png" alt="The Pig Card" />
+    <img
+      src="../../assets/images/cards/Immortal_Maize_Walker.png"
+      alt="Immortal Maize Walker Card"
+    />
+    <img
+      src="../../assets/images/cards/Blue_Plains_Drifter.png"
+      alt="Blue Blue Plains Drifter Card"
+    />
+    <img src="../../assets/images/cards/Cool_Dog.png" alt="Cool Dog Card" />
+    <img
+      src="../../assets/images/cards/Emboldened_Retriever.png"
+      alt="Emboldened Retriever Card"
+    />
+    <img src="../../assets/images/cards/Archer_Dan.png" alt="Archer Dan Card" />
+    <img
+      src="../../assets/images/cards/Beach_Mummy.png"
+      alt="Beach Mummy Card"
+    />
+    <img
+      src="../../assets/images/cards/Investigator.png"
+      alt="Investigator Card"
+    />
+    <img
+      src="../../assets/images/cards/Papercut_Tiger.png"
+      alt="PaperCut Tiger Card"
+    />
+    <img
+      src="../../assets/images/cards/Party_Oasis.png"
+      alt="Party Oasis Card"
+    />
+    <img src="../../assets/images/cards/Pentacutie.jpg" alt="Pentacutie Card" />
+    <img
+      src="../../assets/images/cards/Rainbow_Eyebat.png"
+      alt="Rainbow Eyebat Card"
+    />
+  </div>
+  <div class="checkDDB">
+    <p>Want to see more awesome cards? Check the Deck Database.</p>
+    <button (click)="goToCards()">Deck Database</button>
+  </div>
+  <!-- <p>HOW TO PLAY CARD WARS -></p> -->
+  <!-- TODO: border around the video thats adventure time themed- maybe wood border idk -->
+  <!-- TODO: now that the video is on the left side, maybe i can add some still image of the characters to the right or some other type of content, or maybe even the video that the game is referenced from? -->
+  <!-- <div class="video-container">
+    <iframe
+      width="560"
+      height="315"
+      [src]="videoUrl"
+      frameborder="1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    >
+    </iframe>
+  </div> -->
+
+  <!-- <p>
+    For more tips and tricks on how to play Card Wars check out the How to Play
+    tab!
+  </p> -->
+</section>
+<div class="news-ticker">
+  <img
+    src="../../assets/images/OrangeWalker.webp"
+    alt="Immortal Maize Walker"
+  />
+  <div class="news-content">
+    <p>ADVENTURE TIME CARD WARS NEWS</p>
+
+    <div class="video-container">
+      <span>Check out the new Card Wars Kickstarter before its gone!</span>
+      <video controls>
+        <source
+          src="https://v2.kickstarter.com/1740766771-OaajkyOJym7pAbfZ956MrAcWvxUeSy0ECTdJ39T%2BTUc%3D/projects/5016487/video-1338599-h264_high.mp4"
+          type="video/mp4"
+        />
+      </video>
+      <p>Adventure Time Card Wars 2025</p>
+
+      <span>
+        Card Wars is turning up the HEAT! Get ready for three new Collector’s
+        Packs, LavaFlats Landscapes, a big BMO, and new ways to play!</span
+      >
+      <p>
+        Click
+        <a
+          href="https://www.kickstarter.com/projects/cze/adventure-time-card-wars-2025?ref=recommendation-ended-project-1&category_id=Q2F0ZWdvcnktMzQ="
+          target="_blank"
+          class="highlight-link"
+        >
+          Here</a
+        >
+        to go to the Kickstarter
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="scroll-top" [class.visible]="showScrollTop" (click)="scrollToTop()">
+  Back to Top ⬆
+</div>

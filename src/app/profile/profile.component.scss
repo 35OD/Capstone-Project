@@ -1,0 +1,97 @@
+.profile-container {
+  max-width: 1200px;
+  width: 80%;
+  margin: 3rem auto;
+  padding: 2rem;
+  background-color: #2a2a2a;
+  border-radius: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .profile-header {
+    background: transparent;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .profile-image {
+    background: transparent;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #4ac6b7;
+
+    img {
+      background: transparent;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .user-info {
+    background: transparent;
+    h2 {
+      background: transparent;
+      font-size: 2rem;
+      color: white;
+      margin: 0;
+    }
+  }
+
+  .decks-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 2rem;
+
+    h3 {
+      background: transparent;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+  }
+
+  .deck-grid {
+    background: transparent;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .deck-card {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding: 1rem;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    h4 {
+      background: transparent;
+      color: white;
+      margin: 0 0 1rem 0;
+    }
+  }
+
+  .deck-actions {
+    display: flex;
+    gap: 1rem;
+    background: transparent;
+    button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      background: #4ac6b7;
+      color: white;
+      cursor: pointer;
+
+      &:hover {
+        background: darken(#4ac6b7, 10%);
+      }
+    }
+  }
+}

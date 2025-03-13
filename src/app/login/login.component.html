@@ -1,0 +1,104 @@
+<!-- todo: the login and register page will be a pop up and not a completely different page which means i could prolly just use the same html for both pages type shi  -->
+<div class="login-popup" [class.show]="isPopupVisible">
+  <div class="popup-content">
+    <div class="together">
+      <h2 class="centered">{{ isLogin ? "Login" : "Register" }}</h2>
+      <button class="close-btn" (click)="closePopup()">X</button>
+    </div>
+
+    <form class="login-form" *ngIf="isLogin" (ngSubmit)="onLogin()">
+      <p class="message" [class.flash-red]="!isSuccess" [class.flash-green]="isSuccess">{{ message }}</p>
+      <div class="form-group">
+        <input
+          type="text"
+          [(ngModel)]="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <!-- add a required section that shows an error message if the field is empty/ not up to standard-->
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <span type="button" class="show-password" (click)="togglePassword()">
+          {{ showPassword ? "Hide" : "Show" }} Password
+        </span>
+      </div>
+      <!-- <div class="form-group">
+        <div class="forgot-click">
+          <span>Forgot Password?</span>
+        </div>
+      </div> -->
+      <div class="centered">
+        <button type="submit" class="login-btn">Login</button>
+      </div>
+      <p class="switch-form">
+        Don't have an account?
+        <span (click)="toggleForm()"> Register Here</span>
+      </p>
+    </form>
+
+    <form class="login-form" *ngIf="!isLogin"  (ngSubmit)="emailInput.valid ? onRegister() : message = 'Please enter a valid email'">
+      <p class="message" [class.flash-red]="!isSuccess" [class.flash-green]="isSuccess">{{ message }}</p>
+      <div class="form-group">
+        <input
+          type="text"
+          [(ngModel)]="username"
+          name="username"
+          placeholder="Username"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          [(ngModel)]="email"
+          name="email"
+          placeholder="Email"
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+    #emailInput="ngModel"
+          required
+        />
+        <div *ngIf="emailInput.invalid && (emailInput.dirty || emailInput.touched)" class="error-message">
+          <div *ngIf="emailInput.errors?.['pattern']">Please enter a valid email address (e.g. example&#64;domain.com)</div>
+          <div *ngIf="emailInput.errors?.['required']">Email is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          [(ngModel)]="password"
+          name="password"
+          placeholder="Password"
+          required
+        />
+        <span type="button" class="show-password" (click)="togglePassword()">
+          {{ showPassword ? "Hide" : "Show" }} Password
+        </span>
+        <span
+          type="button"
+          class="show-password"
+          (click)="togglePassword()"
+        ></span>
+      </div>
+      <!-- <div class="form-group">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          placeholder="Confirm Password"
+        />
+      </div> -->
+      <div class="centered">
+        <button type="submit" class="login-btn">Register</button>
+      </div>
+      <p class="switch-form">
+        Already have an account? <span (click)="toggleForm()">Login Here</span>
+      </p>
+    </form>
+  </div>
+</div>
